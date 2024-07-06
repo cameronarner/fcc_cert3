@@ -1,5 +1,16 @@
 import './App.css'
 
+function Drum({value, onDrumClick}){
+  return (
+    <button className="drum-pad" id={value} onclick={onDrumClick}>
+      {value}
+    </button>
+  )
+}
+function handleClick({letter}){
+
+
+}
 
 function App() {
 
@@ -7,19 +18,19 @@ function App() {
       <div id="drum-machine">
           <div className="button-panel">
           <div className="button-row">
-          <button className="drum">Q</button>
-          <button className="drum">Q</button>
-          <button className="drum">Q</button>
+          <Drum value="Q" onDrumClick={()=>handleClick("Q")} />
+          <Drum value="W" onDrumClick={()=>handleClick("W")} />
+          <Drum value="E" onDrumClick={()=>handleClick("E")} />
           </div>
           <div className="button-row">
-          <button className="drum">Q</button>
-          <button className="drum">Q</button>
-          <button className="drum">Q</button>
+          <Drum value="A" onDrumClick={()=>handleClick("A")} />
+          <Drum value="S" onDrumClick={()=>handleClick("S")} />
+          <Drum value="D" onDrumClick={()=>handleClick("D")} />
           </div>
           <div className="button-row">
-          <button className="drum">Q</button>
-          <button className="drum">Q</button>
-          <button className="drum">Q</button>
+          <Drum value="Z" onDrumClick={()=>handleClick("Z")} />
+          <Drum value="X" onDrumClick={()=>handleClick("X")} />
+          <Drum value="C" onDrumClick={()=>handleClick("C")} />
           </div>
         </div>
         <div id="display"></div>
