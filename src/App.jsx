@@ -1,4 +1,5 @@
 import './App.css'
+import React, {useState, useEffect} from 'react';
 
 function Drum({value, onDrumClick}){
   return (
@@ -6,9 +7,13 @@ function Drum({value, onDrumClick}){
       {value}
     </button>
   )
-}
+}  
+//value for display div-> react component?
 
-function handleClick(letter){
+
+function App() {
+  const [nameState, setNameState] = useState("");
+
   const sounds = {
     Q: {sound: "https://cdn.freecodecamp.org/testable-projects-fcc/audio/Heater-1.mp3", soundName: "Heater 1"},
     W: {sound: "https://cdn.freecodecamp.org/testable-projects-fcc/audio/Heater-2.mp3", soundName: "Heater 2"},
@@ -20,13 +25,27 @@ function handleClick(letter){
     X: {sound: "https://cdn.freecodecamp.org/testable-projects-fcc/audio/RP4_KICK_1.mp3", soundName: "Kick"},
     C: {sound: "https://cdn.freecodecamp.org/testable-projects-fcc/audio/Cev_H2.mp3", soundName: "Closed-HH"}
   }
+function handleClick(letter){
+  if (sounds[letter]){
   var playSound = new Audio(sounds[letter].sound);
   playSound.play();
-//value for display div-> react component?
+  setNameState(sounds[letter].soundName)
+  }
 }
 
-function App() {
+  useEffect(()=>{
+    function handleKeyPress(event) {
+      const key = event.key.toUpperCase();
+      handleClick(key);
+    }
   
+  document.addEventListener('keydown', handleKeyPress);
+
+  return () => {
+    document.removeEventListener('keydown', handleKeyPress);
+  };
+}, []);
+
   return (
       <div id="drum-machine">
           <div className="button-panel">
@@ -46,7 +65,7 @@ function App() {
           <Drum value="C" onDrumClick={()=>handleClick("C")} />
           </div>
         </div>
-        <div id="display"></div>
+        <div id="display">{nameState}</div>
         <div className="control-panel"></div>
       </div>
   )
