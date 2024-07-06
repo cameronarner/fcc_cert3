@@ -2,18 +2,31 @@ import './App.css'
 
 function Drum({value, onDrumClick}){
   return (
-    <button className="drum-pad" id={value} onclick={onDrumClick}>
+    <button className="drum-pad" id={value} onClick={onDrumClick}>
       {value}
     </button>
   )
 }
-function handleClick({letter}){
 
-
+function handleClick(letter){
+  const sounds = {
+    Q: {sound: "https://cdn.freecodecamp.org/testable-projects-fcc/audio/Heater-1.mp3", soundName: "Heater 1"},
+    W: {sound: "https://cdn.freecodecamp.org/testable-projects-fcc/audio/Heater-2.mp3", soundName: "Heater 2"},
+    E: {sound: "https://cdn.freecodecamp.org/testable-projects-fcc/audio/Heater-3.mp3", soundName: "Heater 3"},
+    A: {sound: "https://cdn.freecodecamp.org/testable-projects-fcc/audio/Heater-4_1.mp3", soundName: "Heater 4"},
+    S: {sound: "https://cdn.freecodecamp.org/testable-projects-fcc/audio/Heater-6.mp3", soundName: "Clap"},
+    D: {sound: "https://cdn.freecodecamp.org/testable-projects-fcc/audio/Dsc_Oh.mp3", soundName: "Open-HH"},
+    Z: {sound: "https://cdn.freecodecamp.org/testable-projects-fcc/audio/Kick_n_Hat.mp3", soundName: "Kick-n'-Hat"},
+    X: {sound: "https://cdn.freecodecamp.org/testable-projects-fcc/audio/RP4_KICK_1.mp3", soundName: "Kick"},
+    C: {sound: "https://cdn.freecodecamp.org/testable-projects-fcc/audio/Cev_H2.mp3", soundName: "Closed-HH"}
+  }
+  var playSound = new Audio(sounds[letter].sound);
+  playSound.play();
+//value for display div-> react component?
 }
 
 function App() {
-
+  
   return (
       <div id="drum-machine">
           <div className="button-panel">
