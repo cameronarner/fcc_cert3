@@ -31,10 +31,15 @@ App, body{
     grid-area: 1 / 5 / span 1 / span 2;
     background-color: grey;
     width: 135px;
-    height: 85px;
+    height: 65px;
     border-radius: 6px;
-    margin-top: 10px
+    margin-top: 10px;
+    text-align: center;
+    padding-top: 25px;
+    font-size: 22px;
 }
+
+
 
 .control-panel{
     grid-area: 3 / 5 / span 1 / span 2;
